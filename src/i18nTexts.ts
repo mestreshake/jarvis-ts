@@ -1,0 +1,63 @@
+const i18nTexts = {
+  login: {
+    title: 'Stark Tower',
+    subtitle: 'Acesso do Admin',
+    userLabel: 'Usuário',
+    passLabel: 'Senha',
+    showPassword: 'Exibir senha',
+    hidePassword: 'Esconder senha',
+    submit: 'Entrar',
+    error: 'Credenciais inválidas',
+  },
+  visitor: {
+    formTitle: 'Cadastro de Visitante',
+    name: 'Nome',
+    cpf: 'CPF',
+    birthDate: 'Data de Nascimento',
+    email: 'Email',
+    room: 'Sala',
+    selectVisitor: 'Selecione visitante',
+    modeExisting: 'Visitante Recorrente',
+    modeNew: 'Novo Visitante',
+    register: 'Cadastrar Visitante',
+    requiredFields: 'Preencha todos os campos obrigatórios.',
+    invalidCPF: 'CPF inválido.',
+    duplicateCPF: 'Já existe um visitante com este CPF.',
+    limitReached: 'Limite de 3 visitantes ativos na sala atingido.',
+    success: 'Visitante cadastrado com sucesso!',
+    exit: 'Registrar saída',
+    noActive: 'Nenhum visitante ativo.',
+    noHistory: 'Nenhum histórico encontrado.',
+  },
+  tabs: {
+    entry: 'Entrada',
+    active: 'Ativos',
+    history: 'Histórico',
+    logs: 'Logs',
+  },
+  dialogs: {
+    attention: 'Atenção',
+    ok: 'OK',
+  },
+  logs: {
+    entry: 'Entrada',
+    exit: 'Saída',
+    by: 'Por',
+    inRoom: 'na sala',
+    at: 'em',
+  },
+  table: {
+    room: 'Sala',
+    entry: 'Entrada',
+    exit: 'Saída',
+    email: 'Email',
+    name: 'Nome',
+    cpf: 'CPF',
+  },
+  misc: {
+    nA: 'N/A',
+    notFound: '--',
+  },
+};
+
+export default i18nTexts;
