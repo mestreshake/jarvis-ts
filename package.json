@@ -1,5 +1,6 @@
 {
   "name": "jarvis-ts",
+  "homepage": "https://mestreshake.github.io/jarvis-ts/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
