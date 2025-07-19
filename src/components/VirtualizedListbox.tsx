@@ -39,8 +39,10 @@ export const ListboxComponent = React.forwardRef<
   const getChildSize = () => itemSize;
 
   const getHeight = () => {
-    if (itemCount > 8) {
-      return 8 * itemSize;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 600;
+    const maxItems = isMobile ? 3 : 8;
+    if (itemCount > maxItems) {
+      return maxItems * itemSize;
     }
     return itemData.length * itemSize;
   };

@@ -8,8 +8,20 @@ export default function LogsList() {
       {logs.map((l) => (
         <ListItem key={l.id}>
           <ListItemText
-            primary={`${l.visitorName} (${l.type === 'entry' ? 'Entrada' : 'Saída'}) na sala ${l.room}`}
-            secondary={`Por: ${l.authorizedBy} em ${new Date(l.timestamp).toLocaleString()}`}
+            primary={
+              <>
+                <span style={{ fontWeight: 500, marginRight: 24 }}>
+                  {l.visitorName}
+                </span>
+                <span>
+                  ({l.type === 'entry' ? 'Entrada' : 'Saída'}) na sala {l.room}{' '}
+                  — Por:{' '}
+                  <span style={{ fontWeight: 500 }}>{l.authorizedBy}</span> em{' '}
+                  {new Date(l.timestamp).toLocaleString()}
+                </span>
+              </>
+            }
+            secondary={null}
           />
         </ListItem>
       ))}

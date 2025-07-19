@@ -25,44 +25,54 @@ const ExistingVisitorSelect: React.FC<ExistingVisitorSelectProps> = ({
     renderInput={(params) => (
       <TextField {...params} label={i18nTexts.visitor.selectVisitor} required />
     )}
-    renderOption={(props, option) => (
-      <li
-        {...props}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          padding: 8,
-          minWidth: 0,
-          borderBottom: '1px solid #e0e0e0',
-        }}
-      >
-        <div style={{ width: '100%' }}>
-          <div
-            style={{
-              fontWeight: 600,
-              fontSize: 16,
-              color: '#222',
-              whiteSpace: 'pre-line',
-              wordBreak: 'break-word',
-            }}
-          >
-            {option.name}
+    renderOption={(props, option) => {
+      const { key, ...rest } = props;
+      return (
+        <li
+          key={key}
+          {...rest}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            padding: 8,
+            minWidth: 0,
+            borderBottom: '1px solid #e0e0e0',
+            ...(rest.style || {}),
+          }}
+        >
+          <div style={{ width: '100%' }}>
+            <div
+              style={{
+                fontWeight: 600,
+                fontSize: 16,
+                color: '#222',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: '100%',
+                width: '100%',
+                display: 'block',
+              }}
+              title={option.name}
+            >
+              {option.name}
+            </div>
+            <div
+              style={{
+                fontSize: 13,
+                color: '#555',
+                marginTop: 1,
+                whiteSpace: 'pre-line',
+                wordBreak: 'break-word',
+              }}
+            >
+              CPF: {option.cpf}
+            </div>
           </div>
-          <div
-            style={{
-              fontSize: 13,
-              color: '#555',
-              marginTop: 1,
-              whiteSpace: 'pre-line',
-              wordBreak: 'break-word',
-            }}
-          >
-            CPF: {option.cpf}
-          </div>
-        </div>
-      </li>
-    )}
+        </li>
+      );
+    }}
   />
 );
 

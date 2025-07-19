@@ -1,10 +1,10 @@
-import { Button, Stack, TextField, Alert, Box } from '@mui/material';
+import { Button, Stack, TextField, Box } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useVisitorForm } from '../hooks/useVisitorForm';
 import ModeSwitch from './visitorForm/ModeSwitch';
 import ExistingVisitorSelect from './visitorForm/ExistingVisitorSelect';
 import NewVisitorFields from './visitorForm/NewVisitorFields';
-import FeedbackDialog from './visitorForm/FeedbackDialog';
+import Feedback from './common/Feedback';
 import i18nTexts from '../i18n/i18nTexts';
 
 export default function VisitorForm() {
@@ -33,8 +33,6 @@ export default function VisitorForm() {
         <Box
           sx={{
             flexGrow: 1,
-            overflowY: 'auto',
-            p: { xs: 2, sm: 3 },
             scrollbarGutter: 'stable',
           }}
         >
@@ -51,13 +49,19 @@ export default function VisitorForm() {
               <ModeSwitch mode={mode} onChange={handleModeChange} />
             </motion.div>
 
-            {dialog.open && dialog.msg.includes('obrigatórios') && (
+            {dialog.open && dialog.type === 'required' && (
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.12 }}
               >
-                <Alert severity="error">{dialog.msg}</Alert>
+                <Feedback
+                  open={dialog.open}
+                  onClose={closeDialog}
+                  message={dialog.msg}
+                  variant="inline"
+                  severity="error"
+                />
               </motion.div>
             )}
 
@@ -102,11 +106,19 @@ export default function VisitorForm() {
         </Box>
       </Stack>
 
-      <FeedbackDialog
-        open={dialog.open && !dialog.msg.includes('obrigatórios')}
+      <Feedback
+        open={dialog.open && dialog.type !== 'required'}
         onClose={closeDialog}
-        title={i18nTexts.dialogs.attention}
         message={dialog.msg}
+        variant="dialog"
+        severity={
+          dialog.type === 'error'
+            ? 'error'
+            : dialog.type === 'success'
+              ? 'success'
+              : 'info'
+        }
+        title={i18nTexts.dialogs.attention}
       />
     </>
   );

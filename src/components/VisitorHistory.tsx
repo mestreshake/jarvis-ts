@@ -1,12 +1,11 @@
 import React from 'react';
 import { VariableSizeList as List } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
 import { useJarvis } from '../hooks/useJarvis';
 import { VirtualizedItem } from './visitorHistory/VirtualizedItem';
 import { EmptyState } from './visitorHistory/EmptyState';
 import { useVisitorVirtualization } from '../hooks/useVisitorVirtualization';
-
-const MAX_HEIGHT = 600;
 
 const VisitorHistory: React.FC = () => {
   const { visitors } = useJarvis();
@@ -26,23 +25,29 @@ const VisitorHistory: React.FC = () => {
     <Box
       sx={{
         width: '100%',
-        height: MAX_HEIGHT,
+        height: '100%',
         border: '1px solid #e0e0e0',
         borderRadius: 1,
         overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <List
-        ref={listRef}
-        height={MAX_HEIGHT}
-        itemCount={items.length}
-        itemSize={getItemSize}
-        itemData={itemData}
-        overscanCount={5}
-        width="100%"
-      >
-        {VirtualizedItem}
-      </List>
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            ref={listRef}
+            height={height}
+            width={width}
+            itemCount={items.length}
+            itemSize={getItemSize}
+            itemData={itemData}
+            overscanCount={5}
+          >
+            {VirtualizedItem}
+          </List>
+        )}
+      </AutoSizer>
     </Box>
   );
 };

@@ -17,7 +17,12 @@ export const useVisitorForm = () => {
     birthDate: '',
     email: '',
   });
-  const [dialog, setDialog] = useState({ open: false, msg: '' });
+  type DialogType = 'required' | 'error' | 'success' | 'info';
+  const [dialog, setDialog] = useState<{
+    open: boolean;
+    msg: string;
+    type: DialogType;
+  }>({ open: false, msg: '', type: 'info' });
   const [dateError, setDateError] = useState<boolean>(false);
 
   const previousVisitors = useMemo(
@@ -78,24 +83,28 @@ export const useVisitorForm = () => {
         return setDialog({
           open: true,
           msg: 'Este CPF já possui cadastro. Use a opção "Já visitei".',
+          type: 'error',
         });
       }
       if (!isValidCPF(cpfToCheck)) {
         return setDialog({
           open: true,
           msg: 'CPF inválido. Digite um CPF válido.',
+          type: 'error',
         });
       }
       if (form.email && !isValidEmail(form.email)) {
         return setDialog({
           open: true,
           msg: 'Email inválido. Digite um email válido.',
+          type: 'error',
         });
       }
       if (dateError) {
         return setDialog({
           open: true,
           msg: 'A data de nascimento inserida é inválida. Corrija-a ou deixe o campo em branco.',
+          type: 'error',
         });
       }
     }
@@ -108,6 +117,7 @@ export const useVisitorForm = () => {
         return setDialog({
           open: true,
           msg: `${alreadyActive.name} já está na sala ${alreadyActive.room}.`,
+          type: 'error',
         });
       }
     }
@@ -124,6 +134,7 @@ export const useVisitorForm = () => {
       return setDialog({
         open: true,
         msg: 'Nome, CPF e Sala são obrigatórios.',
+        type: 'required',
       });
     }
 
@@ -132,10 +143,16 @@ export const useVisitorForm = () => {
       setDialog({
         open: true,
         msg: 'Limite de 3 visitantes ativos na sala atingido.',
+        type: 'error',
       });
     } else {
       setForm({ name: '', cpf: '', room: '', birthDate: '', email: '' });
       setSelectedVisitor(null);
+      setDialog({
+        open: true,
+        msg: 'Visitante cadastrado com sucesso!',
+        type: 'success',
+      });
     }
   };
 

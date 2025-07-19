@@ -60,7 +60,7 @@ export default function VirtualizedLogsList() {
               {log.visitorName}
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0 }}>
             <Typography variant="body2" color="text.secondary">
               {i18nTexts.logs.inRoom}:
             </Typography>
@@ -79,6 +79,7 @@ export default function VirtualizedLogsList() {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
+              mt: 0, // remove espaço extra em cima
             }}
           >
             {secondaryText}

@@ -5,9 +5,8 @@ import {
   Box,
   InputAdornment,
   IconButton,
-  Snackbar,
-  Alert,
 } from '@mui/material';
+import Feedback from './common/Feedback';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useAuth } from '../hooks/useAuth';
@@ -100,16 +99,14 @@ export default function LoginForm() {
           {i18nTexts.login.submit}
         </Button>
       </Box>
-      <Snackbar
+      <Feedback
         open={showSnackbar && !!error}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         onClose={() => setShowSnackbar(false)}
+        message={i18nTexts.login.error}
+        variant="snackbar"
+        severity="error"
         autoHideDuration={3500}
-      >
-        <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
-          {i18nTexts.login.error}
-        </Alert>
-      </Snackbar>
+      />
     </>
   );
 }
