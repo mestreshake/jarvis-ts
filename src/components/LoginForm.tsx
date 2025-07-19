@@ -12,7 +12,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import i18nTexts from '../i18nTexts';
+import i18nTexts from '../i18n/i18nTexts';
 
 export default function LoginForm() {
   const { login } = useAuth();
@@ -72,7 +72,11 @@ export default function LoginForm() {
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label={showPassword ? i18nTexts.login.hidePassword : i18nTexts.login.showPassword}
+                    aria-label={
+                      showPassword
+                        ? i18nTexts.login.hidePassword
+                        : i18nTexts.login.showPassword
+                    }
                     onClick={handleShowPassword}
                     onMouseDown={(e) => e.preventDefault()}
                     edge="end"

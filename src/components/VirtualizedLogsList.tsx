@@ -1,5 +1,5 @@
 import React from 'react';
-import i18nTexts from '../i18nTexts';
+import i18nTexts from '../i18n/i18nTexts';
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { useJarvis } from '../hooks/useJarvis';

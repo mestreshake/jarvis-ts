@@ -4,7 +4,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
-import i18nTexts from '../../i18nTexts';
+import i18nTexts from '../../i18n/i18nTexts';
 interface NewVisitorFieldsProps {
   form: {
     name: string;

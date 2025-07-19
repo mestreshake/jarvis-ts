@@ -2,7 +2,7 @@ import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import type { Visitor } from '../../domain/Visitor';
 import ListboxComponent from '../VirtualizedListbox';
-import i18nTexts from '../../i18nTexts';
+import i18nTexts from '../../i18n/i18nTexts';
 
 interface ExistingVisitorSelectProps {
   visitors: Visitor[];

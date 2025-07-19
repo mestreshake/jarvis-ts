@@ -1,8 +1,8 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import theme from './theme';
+import theme from './theme/theme';
 import AuthProvider from './context/AuthContext';
 import CustomScrollbar from './components/CustomScrollbar';
-import RoutesApp from './Routes';
+import RoutesApp from './routes/Routes';
 import JarvisProvider from './context/JarvisContext';
 
 function App() {

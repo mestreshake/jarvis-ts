@@ -5,7 +5,7 @@ import ModeSwitch from './visitorForm/ModeSwitch';
 import ExistingVisitorSelect from './visitorForm/ExistingVisitorSelect';
 import NewVisitorFields from './visitorForm/NewVisitorFields';
 import FeedbackDialog from './visitorForm/FeedbackDialog';
-import i18nTexts from '../i18nTexts';
+import i18nTexts from '../i18n/i18nTexts';
 
 export default function VisitorForm() {
   const {
@@ -86,7 +86,9 @@ export default function VisitorForm() {
           </Stack>
         </Box>
 
-        <Box sx={{ maxWidth: { xs: '100%', md: 600 }, mx: 'auto', width: '100%' }}>
+        <Box
+          sx={{ maxWidth: { xs: '100%', md: 600 }, mx: 'auto', width: '100%' }}
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

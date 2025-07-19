@@ -3,7 +3,7 @@ import { Box, Paper, Typography, Stack } from '@mui/material';
 import * as motion from 'motion/react-client';
 import starkLogo from '../assets/stark_logo.png';
 import avengersTowerBg from '../assets/hero.jpg';
-import i18nTexts from '../i18nTexts';
+import i18nTexts from '../i18n/i18nTexts';
 import LoginForm from '../components/LoginForm';
 
 const cardVariants = {

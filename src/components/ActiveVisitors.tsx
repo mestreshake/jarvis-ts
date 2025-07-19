@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useJarvis } from '../hooks/useJarvis';
-import i18nTexts from '../i18nTexts';
+import i18nTexts from '../i18n/i18nTexts';
 
 export default function ActiveVisitors() {
   const { visitors, registerExit } = useJarvis();
