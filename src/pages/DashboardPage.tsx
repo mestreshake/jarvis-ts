@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import VisitorForm from '../components/VisitorForm';
 import ActiveVisitors from '../components/ActiveVisitors';
-import VisitorHistoryCPF from '../components/VisitorHistoryCPF';
+import VisitorHistory from '../components/VisitorHistory';
 import VirtualizedLogsList from '../components/VirtualizedLogsList';
 import { useAuth } from '../hooks/useAuth';
 
@@ -86,7 +86,7 @@ export default function DashboardPage() {
             borderRadius: { xs: 0, sm: 3 },
             boxShadow: { xs: 'none', sm: 4 },
             overflow: 'hidden',
-            height: { xs: 'calc(100vh - 120px)', sm: '85vh' },
+            height: { xs: 'calc(100dvh - 120px)', sm: '85vh' },
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -112,7 +112,7 @@ export default function DashboardPage() {
           >
             {tab === 0 && <VisitorForm />}
             {tab === 1 && <ActiveVisitors />}
-            {tab === 2 && <VisitorHistoryCPF />}
+            {tab === 2 && <VisitorHistory />}
             {tab === 3 && <VirtualizedLogsList />}
           </Box>
         </Paper>

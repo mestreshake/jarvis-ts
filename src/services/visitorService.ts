@@ -38,6 +38,7 @@ export const visitorService = {
       // Usa os dados do formulário como base
       ...data,
       // Se o visitante já existe, mantém seus dados pessoais para consistência
+      // mas remove exitDate para garantir que seja uma nova visita
       ...(existingVisitor && {
         name: existingVisitor.name,
         birthDate: existingVisitor.birthDate,
@@ -49,6 +50,8 @@ export const visitorService = {
       active: true,
       // A sala pode mudar a cada visita, então sempre usa a do formulário
       room: data.room,
+      // Garante que exitDate não exista no novo registro
+      exitDate: undefined,
     };
 
     const updatedVisitors = [...visitors, newVisit];

@@ -5,7 +5,6 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { useJarvis } from '../hooks/useJarvis';
 import {
   ListItem,
-  ListItemText,
   Box,
   ListItemAvatar,
   Avatar,
@@ -29,7 +28,7 @@ export default function VirtualizedLogsList() {
     const log = sorted[index];
     const isEntry = log.type === 'entry';
 
-    const primaryText = `${isEntry ? i18nTexts.logs.entry : i18nTexts.logs.exit}: ${log.visitorName} ${i18nTexts.logs.inRoom} ${log.room}`;
+    const actionText = isEntry ? i18nTexts.logs.entry : i18nTexts.logs.exit;
     const secondaryText = `${i18nTexts.logs.by}: ${log.authorizedBy} ${i18nTexts.logs.at} ${new Date(log.timestamp).toLocaleString()}`;
 
     return (
@@ -39,14 +38,52 @@ export default function VirtualizedLogsList() {
             {isEntry ? <Login /> : <Logout />}
           </Avatar>
         </ListItemAvatar>
-        <ListItemText
-          primary={<Typography variant="body1">{primaryText}</Typography>}
-          secondary={
-            <Typography variant="body2" color="text.secondary">
-              {secondaryText}
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+            <Typography
+              variant="body1"
+              fontWeight="medium"
+              color={isEntry ? 'success.main' : 'error.main'}
+            >
+              {' '}
+              {actionText}:
             </Typography>
-          }
-        />
+            <Typography
+              variant="body1"
+              sx={{
+                flex: 1,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {log.visitorName}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
+            <Typography variant="body2" color="text.secondary">
+              {i18nTexts.logs.inRoom}:
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.primary"
+              fontWeight="medium"
+            >
+              {log.room}
+            </Typography>
+          </Box>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {secondaryText}
+          </Typography>
+        </Box>
       </ListItem>
     );
   };

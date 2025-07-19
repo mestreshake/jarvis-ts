@@ -43,7 +43,7 @@ const i18nTexts = {
     entry: 'Entrada',
     exit: 'Saída',
     by: 'Por',
-    inRoom: 'na sala',
+    inRoom: 'Sala',
     at: 'em',
   },
   table: {

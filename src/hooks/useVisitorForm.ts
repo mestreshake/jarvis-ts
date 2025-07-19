@@ -114,7 +114,10 @@ export const useVisitorForm = () => {
 
     const payload =
       mode === 'existing' && selectedVisitor
-        ? { ...selectedVisitor, room: form.room }
+        ? (() => {
+            const { ...visitorData } = selectedVisitor;
+            return { ...visitorData, room: form.room };
+          })()
         : { ...form };
 
     if (!payload.room || (mode === 'new' && (!payload.name || !payload.cpf))) {
