@@ -2,19 +2,19 @@ import { createContext, useContext } from 'react';
 import type { Visitor } from '../domain/Visitor';
 import type { Log } from '../domain/Log';
 
-interface JarvisState {
+interface VisitorRegistryState {
   visitors: Visitor[];
   logs: Log[];
   addVisitor: (v: Omit<Visitor, 'id' | 'entryDate' | 'active'>) => boolean;
   registerExit: (id: string) => void;
 }
 
-export const JarvisContext = createContext<JarvisState | undefined>(undefined);
+export const VisitorRegistryContext = createContext<VisitorRegistryState | undefined>(undefined);
 
-export const useJarvis = () => {
-  const ctx = useContext(JarvisContext);
+export const useVisitorRegistry = () => {
+  const ctx = useContext(VisitorRegistryContext);
   if (!ctx) {
-    throw new Error('useJarvis must be used within a JarvisProvider');
+    throw new Error('useVisitorRegistry must be used within a VisitorRegistryProvider');
   }
   return ctx;
 };

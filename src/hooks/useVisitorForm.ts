@@ -1,13 +1,13 @@
 import { useState, useMemo } from 'react';
 import type { Visitor } from '../domain/Visitor';
-import { useJarvis } from './useJarvis';
+import { useVisitorRegistry } from './useVisitorRegistry';
 import { isValidCPF, isValidEmail, formatCPF } from '../utils/validation';
 import dayjs from 'dayjs';
 
 export type VisitorMode = 'existing' | 'new';
 
 export const useVisitorForm = () => {
-  const { addVisitor, visitors } = useJarvis();
+  const { addVisitor, visitors } = useVisitorRegistry();
   const [mode, setMode] = useState<VisitorMode>('existing');
   const [selectedVisitor, setSelectedVisitor] = useState<Visitor | null>(null);
   const [form, setForm] = useState({

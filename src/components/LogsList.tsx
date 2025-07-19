@@ -1,8 +1,8 @@
 import { List, ListItem, ListItemText } from '@mui/material';
-import { useJarvis } from '../hooks/useJarvis';
+import { useVisitorRegistry } from '../hooks/useVisitorRegistry';
 
 export default function LogsList() {
-  const { logs } = useJarvis();
+  const { logs } = useVisitorRegistry();
   return (
     <List>
       {logs.map((l) => (

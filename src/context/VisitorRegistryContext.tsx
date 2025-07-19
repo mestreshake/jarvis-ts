@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../hooks/useAuth';
-import { JarvisContext } from '../hooks/useJarvis';
+import { VisitorRegistryContext } from '../hooks/useVisitorRegistry';
 import type { Visitor } from '../domain/Visitor';
 import type { Log } from '../domain/Log';
 import { visitorService } from '../services/visitorService';
 import { generateSeedData } from '../data/devSeedVisitors';
 
-const JarvisProvider: React.FC<{ children: React.ReactNode }> = ({
+const VisitorRegistryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { user } = useAuth();
@@ -52,12 +52,12 @@ const JarvisProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   return (
-    <JarvisContext.Provider
+    <VisitorRegistryContext.Provider
       value={{ visitors, logs, addVisitor, registerExit }}
     >
       {children}
-    </JarvisContext.Provider>
+    </VisitorRegistryContext.Provider>
   );
 };
 
-export default JarvisProvider;
+export default VisitorRegistryProvider;

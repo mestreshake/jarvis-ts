@@ -126,8 +126,8 @@ segura.
 ├── src/
 │   ├── pages/           # Páginas principais (Login, Dashboard)
 │   ├── components/      # Componentes reutilizáveis
-│   ├── context/         # Providers de contexto (Auth, Jarvis)
-│   ├── hooks/           # Hooks customizados (useAuth, useJarvis)
+│   ├── context/         # Providers de contexto (Auth, VisitorRegistry)
+│   ├── hooks/           # Hooks customizados (useAuth, useVisitorRegistry)
 │   ├── domain/          # Tipos e interfaces de domínio
 │   └── ...
 ```

@@ -12,11 +12,11 @@ import {
   Box,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useJarvis } from '../hooks/useJarvis';
+import { useVisitorRegistry } from '../hooks/useVisitorRegistry';
 import i18nTexts from '../i18n/i18nTexts';
 
 export default function ActiveVisitors() {
-  const { visitors, registerExit } = useJarvis();
+  const { visitors, registerExit } = useVisitorRegistry();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const active = visitors

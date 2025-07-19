@@ -2,13 +2,13 @@ import React from 'react';
 import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
-import { useJarvis } from '../hooks/useJarvis';
+import { useVisitorRegistry } from '../hooks/useVisitorRegistry';
 import { VirtualizedItem } from './visitorHistory/VirtualizedItem';
 import { EmptyState } from './visitorHistory/EmptyState';
 import { useVisitorVirtualization } from '../hooks/useVisitorVirtualization';
 
 const VisitorHistory: React.FC = () => {
-  const { visitors } = useJarvis();
+  const { visitors } = useVisitorRegistry();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 

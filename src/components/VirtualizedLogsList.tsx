@@ -2,7 +2,7 @@ import React from 'react';
 import i18nTexts from '../i18n/i18nTexts';
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { useJarvis } from '../hooks/useJarvis';
+import { useVisitorRegistry } from '../hooks/useVisitorRegistry';
 import {
   ListItem,
   Box,
@@ -13,7 +13,7 @@ import {
 import { Login, Logout } from '@mui/icons-material';
 
 export default function VirtualizedLogsList() {
-  const { logs } = useJarvis();
+  const { logs } = useVisitorRegistry();
   const sorted = [...logs].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
   );
@@ -79,7 +79,7 @@ export default function VirtualizedLogsList() {
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
-              mt: 0, // remove espaço extra em cima
+              mt: 0,
             }}
           >
             {secondaryText}

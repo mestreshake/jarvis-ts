@@ -3,7 +3,7 @@ import theme from './theme/theme';
 import AuthProvider from './context/AuthContext';
 import CustomScrollbar from './components/CustomScrollbar';
 import RoutesApp from './routes/Routes';
-import JarvisProvider from './context/JarvisContext';
+import VisitorRegistryProvider from './context/VisitorRegistryContext';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <CssBaseline />
       <CustomScrollbar />
       <AuthProvider>
-        <JarvisProvider>
+        <VisitorRegistryProvider>
           <RoutesApp />
-        </JarvisProvider>
+        </VisitorRegistryProvider>
       </AuthProvider>
     </ThemeProvider>
   );
